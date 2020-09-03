@@ -37,7 +37,6 @@ class Journal {
 	}
 }
 
-// handles the responsibility of persisting objects
 class Persistence {
 	public void saveToFile(Journal journal, String filename, boolean overwrite) throws Exception {
 		if (overwrite || new File(filename).exists())
@@ -60,15 +59,16 @@ class SingleResponsibilityPrincipleDemo {
 		journal.addEntry("I jogged today");
 		System.out.println(journal);
 
-		Persistence p = new Persistence();
+		Persistence persistance = new Persistence();
 		String filename = "my_journal.txt";
-		p.saveToFile(journal, filename, true);
+		persistance.saveToFile(journal, filename, true);
 
 		System.out.println("Printing the content of my journal");
-		BufferedReader br = new BufferedReader(new FileReader(filename));
-        for (String line; (line = br.readLine()) != null;) {
+		BufferedReader bufferReader = new BufferedReader(new FileReader(filename));
+        for (String line; (line = bufferReader.readLine()) != null;) {
             System.out.println(line);
         }
-        br.close();
+        
+        bufferReader.close();
 	}
 }

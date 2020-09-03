@@ -41,7 +41,7 @@ class OldMachine implements IMachine{
 	}
 }
 
-interface IPrinter{
+interface IPrint{
 	void print(Document document);
 }
 
@@ -49,11 +49,11 @@ interface IFax{
 	void fax(Document document);
 }
 
-interface IScanner{
+interface IScan{
 	void scan(Document document);
 }
 
-class Printer implements IPrinter{
+class Printer implements IPrint{
 
 	@Override
 	public void print(Document document) {
@@ -67,21 +67,21 @@ class Fax implements IFax{
 	}
 }
 
-class Scanner implements IScanner{
+class Scanner implements IScan{
 
 	@Override
 	public void scan(Document document) {
 	}
 }
 
-class MultiFunctionalPrinter implements IPrinter, IFax, IScanner {
+interface IMultiFunctionPrinter extends IPrint, IScan {
+	
+}
+
+class MultiFunctionalPrinter implements IMultiFunctionPrinter {
 
 	@Override
 	public void scan(Document document) {	
-	}
-
-	@Override
-	public void fax(Document document) {
 	}
 
 	@Override
