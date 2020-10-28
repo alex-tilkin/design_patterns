@@ -9,7 +9,7 @@ import com.google.inject.Injector;
 // Rendere: Vector, Raster
 // Classes: VectorCircleRenderer, RasterCircleRenderer, VectorSquareRenderer, RasterSquareRenderer 
 
-interface Renderer{
+interface Renderer {
 	void renderCirlde(float radius);
 	void renderSquare(float length);
 }
@@ -79,7 +79,7 @@ class Circle extends Shape{
 	
 }
 
-class Square extends Shape{
+class Square extends Shape {
 	
 	public float dimension;
 	
@@ -122,7 +122,7 @@ public class BridgeExample {
 		square.resize(2);
 		square.draw();
 		
-		//Google Guice implementation
+		//Google Guice
 		Injector injector = Guice.createInjector(new ShapeModule());
 		Circle instance = injector.getInstance(Circle.class);
 		instance.radius = 8;
