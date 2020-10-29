@@ -59,6 +59,26 @@ class Square extends Rectangle{
 	}
 }
 
+/*interface Quad {
+	
+}
+
+abstract class PropotionalQuad implements Quad {
+	
+}
+
+abstract class NonpropotionalQuad implements Quad {
+	
+}
+
+class Rectangle extends NonpropotionalQuad {
+	
+}
+
+class Square extends PropotionalQuad {
+	
+}*/
+
 public class LiskovSubstitudePrinciple {
 	  static void test(Rectangle rectangle)
 	  {
@@ -73,7 +93,7 @@ public class LiskovSubstitudePrinciple {
 
 	    Rectangle square = new Square();
 	    square.setHeight(5);
-	    square.setWidth(10);
+	    //square.setWidth(10);
 	    test(square);
 	  }
 }
