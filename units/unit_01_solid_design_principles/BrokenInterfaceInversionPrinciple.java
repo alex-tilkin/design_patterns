@@ -21,6 +21,7 @@ class Person {
 		return name;
 	}
 }
+// ^^ Data Layer
 
 class Relationships {
 	public List<Triplet<Person, Relationship, Person>> relations = new ArrayList<Triplet<Person,Relationship,Person>>();
@@ -29,11 +30,12 @@ class Relationships {
 		return relations;
 	}
 	
-	public void AddRelationPArentChild(Person parent, Person child) {
+	public void AddRelationParentChild(Person parent, Person child) {
 		relations.add(new Triplet<Person, Relationship, Person>(parent, Relationship.PARENT, child));
 		relations.add(new Triplet<Person, Relationship, Person>(child, Relationship.CHILD, parent));
 	}
 }
+//^^ Infrastructure
 
 class Study {
 	public static void printChildrenOf(String name, Relationships relationships) {
@@ -42,6 +44,7 @@ class Study {
 				forEach(relation -> System.out.println(relation.getValue2().getName() + " is a child of " + relation.getValue0().getName()));
 	}
 }
+//^^ Application
 
 public class BrokenInterfaceInversionPrinciple {
 
@@ -53,9 +56,9 @@ public class BrokenInterfaceInversionPrinciple {
 		Person person5 = new Person("Timmy");
 		
 		Relationships relationships = new Relationships();
-		relationships.AddRelationPArentChild(person2, person4);
-		relationships.AddRelationPArentChild(person2, person5);
-		relationships.AddRelationPArentChild(person1, person3);
+		relationships.AddRelationParentChild(person2, person4);
+		relationships.AddRelationParentChild(person2, person5);
+		relationships.AddRelationParentChild(person1, person3);
 		
 		Study.printChildrenOf(person1.getName(), relationships);
 		Study.printChildrenOf(person2.getName(), relationships);

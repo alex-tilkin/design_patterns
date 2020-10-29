@@ -8,6 +8,7 @@ import org.javatuples.Triplet;
 interface IRelationshipsBrowser {
 	List<Person> findChildrenOfParentByName(Person person);
 }
+//^^ Abstract Layer
 
 class RelationshipsBrowser implements IRelationshipsBrowser {
 	public List<Triplet<Person, Relationship, Person>> relations = new ArrayList<Triplet<Person,Relationship,Person>>();
@@ -20,7 +21,8 @@ class RelationshipsBrowser implements IRelationshipsBrowser {
 		relations.add(new Triplet<Person, Relationship, Person>(parent, Relationship.PARENT, child));
 		relations.add(new Triplet<Person, Relationship, Person>(child, Relationship.CHILD, parent));
 	}
-
+	//^^ exposed for usage in the infrastructure layer but closed for the application layer
+	
 	@Override
 	public List<Person> findChildrenOfParentByName(Person person) {
 		List<Person> children = new ArrayList<Person>();
@@ -32,6 +34,7 @@ class RelationshipsBrowser implements IRelationshipsBrowser {
 		return children;
 	}
 }
+//^^ Infrastructure
 
 class AgnosticStudy {
 	public static void printChildrenOf(Person person, IRelationshipsBrowser relationshipsBrowser) {
@@ -40,6 +43,7 @@ class AgnosticStudy {
 		children.forEach(child -> System.out.println(String.format("%s is a child of %s", child.getName(), person.getName())));
 	}
 }
+//^^ Application
 
 public class InterfaceInversionPrinciple {
 
