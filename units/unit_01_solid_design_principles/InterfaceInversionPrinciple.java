@@ -17,7 +17,7 @@ class RelationshipsBrowser implements IRelationshipsBrowser {
 		return relations;
 	}
 	
-	public void AddRelationPArentChild(Person parent, Person child) {
+	public void AddRelationParentChild(Person parent, Person child) {
 		relations.add(new Triplet<Person, Relationship, Person>(parent, Relationship.PARENT, child));
 		relations.add(new Triplet<Person, Relationship, Person>(child, Relationship.CHILD, parent));
 	}
@@ -55,9 +55,9 @@ public class InterfaceInversionPrinciple {
 		Person person5 = new Person("Timmy");
 		
 		RelationshipsBrowser relationshipsBrowser = new RelationshipsBrowser();
-		relationshipsBrowser.AddRelationPArentChild(person2, person4);
-		relationshipsBrowser.AddRelationPArentChild(person2, person5);
-		relationshipsBrowser.AddRelationPArentChild(person1, person3);
+		relationshipsBrowser.AddRelationParentChild(person2, person4);
+		relationshipsBrowser.AddRelationParentChild(person2, person5);
+		relationshipsBrowser.AddRelationParentChild(person1, person3);
 		
 		AgnosticStudy.printChildrenOf(person1, relationshipsBrowser);
 		AgnosticStudy.printChildrenOf(person2, relationshipsBrowser);

@@ -38,7 +38,6 @@ class Square implements Shape {
 	public String info() {
 		return "A square with side " + side;
 	}
-
 }
 
 class ColoredShape implements Shape {

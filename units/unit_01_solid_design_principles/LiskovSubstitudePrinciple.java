@@ -80,8 +80,7 @@ class Square extends PropotionalQuad {
 }*/
 
 public class LiskovSubstitudePrinciple {
-	  static void test(Rectangle rectangle)
-	  {
+	  static void test(Rectangle rectangle) {
 	    int width = rectangle.getWidth();
 	    rectangle.setHeight(10);
 	    System.out.println("The Expected area size is " + (width * 10) + ", actual are size is " + rectangle.getArea());

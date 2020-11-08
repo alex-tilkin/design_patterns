@@ -74,8 +74,7 @@ class Scanner implements IScan{
 	}
 }
 
-interface IMultiFunctionPrinter extends IPrint, IScan {
-	
+interface IMultiFunctionPrinter extends IPrint, IScan {	
 }
 
 class MultiFunctionalPrinter implements IMultiFunctionPrinter {
@@ -86,7 +85,7 @@ class MultiFunctionalPrinter implements IMultiFunctionPrinter {
 
 	@Override
 	public void print(Document document) {
-	}	
+	}
 }
 
 public class InterfaceSegregationPrinciple {

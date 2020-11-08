@@ -24,7 +24,7 @@ class Person {
 // ^^ Data Layer
 
 class Relationships {
-	public List<Triplet<Person, Relationship, Person>> relations = new ArrayList<Triplet<Person,Relationship,Person>>();
+	private List<Triplet<Person, Relationship, Person>> relations = new ArrayList<Triplet<Person,Relationship,Person>>();
 	
 	public List<Triplet<Person, Relationship, Person>> getRelations() {
 		return relations;
@@ -39,7 +39,7 @@ class Relationships {
 
 class Study {
 	public static void printChildrenOf(String name, Relationships relationships) {
-		relationships.relations.stream().
+		relationships.getRelations().stream().
 			filter(relation -> relation.getValue0().getName().equals(name) && relation.getValue1() == Relationship.PARENT).
 				forEach(relation -> System.out.println(relation.getValue2().getName() + " is a child of " + relation.getValue0().getName()));
 	}
