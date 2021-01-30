@@ -19,11 +19,11 @@ class TokenMachine {
 	public List<Token> tokens = new ArrayList<>();
 
 	public MementoEx addToken(int value) {
-		// todo
+		return null;
 	}
 
 	public MementoEx addToken(Token token) {
-		// todo
+		return null;
 	}
 
 	public void revert(Memento m) {
