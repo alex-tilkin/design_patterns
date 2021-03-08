@@ -4,18 +4,20 @@ class Person {
 	public int id;
 	public String name;
 
-	public Person(int id, String name) {
+	private Person(int id, String name) {
 		this.id = id;
 		this.name = name;
 	}
-}
-
-class PersonFactory {
-	public Person createPerson(String name) {
-		// todo
-		return null;
+	
+	static class PersonFactory {
+		public Person createPerson(String name) {
+			// todo
+			return null;
+		}
 	}
 }
+
+
 
 public class FactoryCodingExercise {
 
