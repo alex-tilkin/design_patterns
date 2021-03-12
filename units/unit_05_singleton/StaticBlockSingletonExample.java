@@ -4,7 +4,7 @@ package unit_05_singleton;
 class StaticBlockSingleton {
 	public static StaticBlockSingleton instance;
 	
-	// This is Static Block; it is executed when the class is loaded to the memory; meaning only once
+	// This is a Static Block; it is executed when the class is loaded to the memory; meaning only once
 	static {
 		try {
 			instance = new StaticBlockSingleton();

@@ -12,8 +12,7 @@ class Line {
 
 class Quadrate {
     public void draw(int x, int y, int width, int height) {
-        System.out.println("Rectangle with coordinate left-down point (" + x + ";" + y + "), width: " + width
-                + ", height: " + height);
+        System.out.println("Rectangle with coordinate left-down point (" + x + ";" + y + "), width: " + width + ", height: " + height);
     }
 }
 
@@ -46,22 +45,6 @@ class RectangleAdapter implements IShape {
         adaptee.draw(x, y, width, height);
     }
 }
-
-/*public class AdapterDemo {
-    public static void main(String[] args) {
-        Object[] shapes = {new Line(), new Rectangle()};
-        int x1 = 10, y1 = 20;
-        int x2 = 30, y2 = 60;
-        int width = 40, height = 40;
-        for (Object shape : shapes) {
-            if (shape.getClass().getSimpleName().equals("Line")) {
-                ((Line)shape).draw(x1, y1, x2, y2);
-            } else if (shape.getClass().getSimpleName().equals("Rectangle")) {
-                ((Rectangle)shape).draw(x2, y2, width, height);
-            }
-        }
-    }
-}*/
 
 public class AdapterDemo {
     public static void main(String[] args) {

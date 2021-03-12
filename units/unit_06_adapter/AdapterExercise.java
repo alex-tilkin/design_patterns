@@ -42,5 +42,4 @@ public class AdapterExercise {
 		// TODO Auto-generated method stub
 
 	}
-
 }

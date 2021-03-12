@@ -36,23 +36,21 @@ class BasicSingleton implements Serializable {
 public class BasicSingletonExample {
 	
 	static void saveToFile(BasicSingleton singleton, String filename) throws Exception {
-		try (	FileOutputStream fileOut = new FileOutputStream(filename);
-				ObjectOutputStream out = new ObjectOutputStream(fileOut)) { 
+		try (FileOutputStream fileOut = new FileOutputStream(filename); ObjectOutputStream out = new ObjectOutputStream(fileOut)) { 
 			out.writeObject(singleton);
-			}
 		}
+	}
 	
 	static BasicSingleton readFromFile(String filename) throws Exception {
-		try (	FileInputStream fileIn = new FileInputStream(filename);
-				ObjectInputStream in = new ObjectInputStream(fileIn) ) {
+		try (FileInputStream fileIn = new FileInputStream(filename); ObjectInputStream in = new ObjectInputStream(fileIn) ) {
 			return (BasicSingleton)in.readObject();
-			}
 		}
+	}
 	
 	public static void main(String[] args) throws Exception {
 		BasicSingleton basicSingleton = BasicSingleton.INSTANCE;
 
-		System.out.println(basicSingleton.getNumber());
+		System.out.println("number after first instantiation: " + basicSingleton.getNumber());
 		
 	    String filename = "singleton.bin";
 	    saveToFile(basicSingleton, filename);
@@ -61,10 +59,10 @@ public class BasicSingletonExample {
 
 	    BasicSingleton basicSingletonB = readFromFile(filename);
 	    
-	    System.out.println(basicSingleton == basicSingletonB);
+	    System.out.println("Are instances have the same address: " + (basicSingleton == basicSingletonB));
 
-	    System.out.println(basicSingleton.getNumber());
-	    System.out.println(basicSingletonB.getNumber());
+	    System.out.println("number of the first instance: " + basicSingleton.getNumber());
+	    System.out.println("number of the second instance: " + basicSingletonB.getNumber());
 	    
 	    // uncomment the readResolve method and run it again.
 	    // Compare the outputs.
