@@ -45,9 +45,14 @@ class SingletonWsl implements IWsl {
 }
 
 class DummySingletonWsl implements IWsl {
+	public static DummySingletonWsl instance;
 	private Dictionary<String, Integer> surfers = new Hashtable<String, Integer>();
 	
-	public DummySingletonWsl() {
+	static {
+		instance = new DummySingletonWsl();
+	}
+	
+	private DummySingletonWsl() {
 		surfers.put("yossi", 1);
 		surfers.put("assi", 2);
 		surfers.put("alon", 3);
@@ -80,8 +85,8 @@ class SingletonSurferHeatWinsFinder {
 class SingletonSurferHeatWinsFinderTests {
 		
 	@Test
-	public void SingletonSurferHeatWinsFinder_TotalPopulationEquals6_True() {
-		IWsl wsl = new DummySingletonWsl();
+	public void SingletonSurferHeatWinsFinder_TotalNumberOfHeatWinsEquals6_True() {
+		IWsl wsl = DummySingletonWsl.instance;
 		SingletonSurferHeatWinsFinder singletonSurferHeatWinsFinder = new SingletonSurferHeatWinsFinder(wsl);
 		ArrayList<String> data = new ArrayList<String>();
 		data.add("assi");
@@ -95,6 +100,9 @@ class SingletonSurferHeatWinsFinderTests {
 
 public class UnitTestingWithSingletonExample {
 	public static void main(String[] args) {
-		
+		SingletonSurferHeatWinsFinder singletonSurferHeatWinsFinder = new SingletonSurferHeatWinsFinder(SingletonWsl.instance);
+		List<String> names = new ArrayList<String>();
+		//names.add("dsdas");
+		singletonSurferHeatWinsFinder.getTotalNumberOfHeatWins(names);
 	}
 }

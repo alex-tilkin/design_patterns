@@ -1,8 +1,5 @@
 package unit_06_adapter;
 
-interface IShape {
-    void draw(int x, int y, int z, int j);
-}
 
 class Line {
     public void draw(int x1, int y1, int x2, int y2) {
@@ -12,8 +9,12 @@ class Line {
 
 class Quadrate {
     public void draw(int x, int y, int width, int height) {
-        System.out.println("Rectangle with coordinate left-down point (" + x + ";" + y + "), width: " + width + ", height: " + height);
+        System.out.println("Quadrate with coordinate left-down point (" + x + ";" + y + "), width: " + width + ", height: " + height);
     }
+}
+
+interface IShape {
+    void draw(int x, int y, int z, int j);
 }
 
 class LineAdapter implements IShape {
@@ -29,11 +30,11 @@ class LineAdapter implements IShape {
     }
 }
 
-class RectangleAdapter implements IShape {
+class QuadrateAdapter implements IShape {
     private Quadrate adaptee;
 
-    public RectangleAdapter(Quadrate rectangle) {
-        this.adaptee = rectangle;
+    public QuadrateAdapter(Quadrate quadrate) {
+        this.adaptee = quadrate;
     }
 
     @Override
@@ -48,10 +49,15 @@ class RectangleAdapter implements IShape {
 
 public class AdapterDemo {
     public static void main(String[] args) {
-        IShape[] shapes = {new RectangleAdapter(new Quadrate()), new LineAdapter(new Line())};
+        IShape[] shapes = {
+        		new QuadrateAdapter(new Quadrate()), 
+        		new LineAdapter(new Line())
+        		};
+        
         int x1 = 10, y1 = 20;
         int x2 = 30, y2 = 60;
         
+        System.out.println("Drawing shapes using a common interface IShape");
         for (IShape shape : shapes) {
             shape.draw(x1, y1, x2, y2);
         }

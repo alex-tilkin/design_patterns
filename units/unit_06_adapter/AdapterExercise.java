@@ -10,7 +10,8 @@ class Square {
 
 interface Rectangle {
 	int getWidth();
-
+	
+	
 	int getHeight();
 
 	default int getArea() {
@@ -39,7 +40,5 @@ class SquareToRectangleAdapter implements Rectangle {
 public class AdapterExercise {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
 	}
 }
