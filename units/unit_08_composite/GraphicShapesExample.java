@@ -54,8 +54,12 @@ public class GraphicShapesExample {
 
 	public static void main(String[] args) {
 		GraphicObject drawing = new GraphicObject("Shapes", "Red");
-		drawing.addChild(new Square("Red"));
-		drawing.addChild(new Circle("Green"));
+		Square square = new Square("Red");
+		Square redred = new Square("RedRed");
+		redred.addChild(new Circle("redredred"));
+		square.addChild(redred);
+		drawing.addChild(square);
+		drawing.addChild(new Circle("Red"));
 
 		GraphicObject group = new GraphicObject("Blue Shapes", "Blue");
 		group.addChild(new Circle("Blue"));

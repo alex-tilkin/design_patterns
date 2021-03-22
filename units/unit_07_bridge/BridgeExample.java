@@ -10,14 +10,14 @@ import com.google.inject.Injector;
 // Classes: VectorCircleRenderer, RasterCircleRenderer, VectorSquareRenderer, RasterSquareRenderer 
 
 interface Renderer {
-	void renderCirlde(float radius);
+	void renderCircle(float radius);
 	void renderSquare(float length);
 }
 
 class VectorRenderer implements Renderer {
 
 	@Override
-	public void renderCirlde(float radius) {
+	public void renderCircle(float radius) {
 		System.out.println("Drawing a circle of radius " + radius);
 	}
 
@@ -30,15 +30,13 @@ class VectorRenderer implements Renderer {
 class RasterRenderer implements Renderer {
 
 	@Override
-	public void renderCirlde(float radius) {
+	public void renderCircle(float radius) {
 		System.out.println("Drawing pixels for a circle of radius " + radius);
-		
 	}
 
 	@Override
 	public void renderSquare(float dimension) {
 		System.out.println("Drawing pixels for a square of dimension " + dimension);
-		
 	}
 }
 
@@ -69,7 +67,7 @@ class Circle extends Shape{
 
 	@Override
 	public void draw() {
-		renderer.renderCirlde(radius);
+		renderer.renderCircle(radius);
 	}
 
 	@Override
