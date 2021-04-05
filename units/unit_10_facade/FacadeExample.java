@@ -13,6 +13,10 @@ class Order {
 	public String toString() {
 		return "ID: " + id;
 	}
+	
+	public void getPrice() {
+		
+	}
 }
 
 
@@ -21,6 +25,14 @@ class Billing {
 	
 	public Billing(int cardNumber) {
 		this.cardNumber = cardNumber;
+	}
+	
+	public void charge() {
+		
+	}
+	
+	public void returnOrder() {
+		
 	}
 	
 	@Override
@@ -34,6 +46,10 @@ class Shipping {
 
 	public Shipping(String address) {
 		this.address = address;
+	}
+	
+	public void ship() {
+		
 	}
 	
 	@Override
@@ -53,6 +69,12 @@ class CustomerServiceFacade {
 		this.shipping = shipping;
 	}
 
+	public void processOrder() {
+		order.getPrice();
+		billing.charge();
+		shipping.ship();
+	}
+	
 	public String getData() {
 		return order.toString() + "; " + billing.toString() + "; " + this.shipping.toString();
 	}
@@ -61,7 +83,18 @@ class CustomerServiceFacade {
 public class FacadeExample {
 
 	public static void main(String[] args) {
-		CustomerServiceFacade customerServiceFacade = new CustomerServiceFacade(new Order(123), new Billing(987), new Shipping("Israel, Tel Aviv, Dizengoff"));
+		Order order = new Order(123);
+		Billing billing = new Billing(987);
+		Shipping shipping = new Shipping("Israel, Tel Aviv, Dizengoff");
+		
+		CustomerServiceFacade customerServiceFacade = new CustomerServiceFacade(order, billing, shipping);
+		
+		order.getPrice();
+		billing.charge();
+		shipping.ship();
+		
+		customerServiceFacade.processOrder();
+		
 		String data = customerServiceFacade.getData();
 		
 		System.out.println(data);
