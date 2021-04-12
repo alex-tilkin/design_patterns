@@ -68,7 +68,11 @@ class CustomerServiceFacade {
 		this.billing = billing;
 		this.shipping = shipping;
 	}
-
+	
+	public void returnOrder() {
+		billing.returnOrder();
+	}
+	
 	public void processOrder() {
 		order.getPrice();
 		billing.charge();

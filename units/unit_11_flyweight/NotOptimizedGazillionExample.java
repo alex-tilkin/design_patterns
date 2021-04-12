@@ -15,7 +15,7 @@ class NotOptimizedGazillion {
 	}
 }
 
-public class NonFlyweightExampleExample {
+public class NotOptimizedGazillionExample {
 	public static final int ROWS = 6, COLS = 10;
 
 	public static void main(String[] args) {
@@ -31,6 +31,7 @@ public class NonFlyweightExampleExample {
 			for (int j = 0; j < COLS; j++) {
 				matrix[i][j].report();
 			}
+			
 			System.out.println();
 		}
 	}
