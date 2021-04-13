@@ -8,6 +8,7 @@ import java.util.HashMap;
 interface IHuman{
 	void walk();
 	void talk();
+	void crunch();
 }
 
 class Person implements IHuman{
@@ -21,13 +22,18 @@ class Person implements IHuman{
 	public void talk() {
 		System.out.println("I'm talking");
 	}
+
+	@Override
+	public void crunch() {
+		System.out.println("I'm crunching");
+	}
 }
 
-class LoggingHandler<T> implements InvocationHandler{
+class MethodsInvocationCounterLoggingHandler<T> implements InvocationHandler{
 	private T target;
 	private HashMap<String, Integer> calls = new HashMap<String, Integer>();
 	
-	public LoggingHandler(T target) {
+	public MethodsInvocationCounterLoggingHandler(T target) {
 		this.target = target;
 	}
 	
@@ -48,20 +54,18 @@ class LoggingHandler<T> implements InvocationHandler{
 public class DynamicLoggingProxyExample {
 	@SuppressWarnings("unchecked")
 	public static <T> T withLogging(T target, Class<T> interfaceType, InvocationHandler invocationHandler) {
-		return (T)Proxy.newProxyInstance(
-				target.getClass().getClassLoader(),
-				new Class<?>[] { interfaceType},
-				invocationHandler);
+		return (T)Proxy.newProxyInstance(target.getClass().getClassLoader(), new Class<?>[] { interfaceType}, invocationHandler);
 	}
 	
 	public static void main(String[] args) {
 		IHuman person = new Person();
 		
-		IHuman personWithLogging = withLogging(person, IHuman.class, new LoggingHandler<IHuman>(person));
+		IHuman personWithLogging = withLogging(person, IHuman.class, new MethodsInvocationCounterLoggingHandler<IHuman>(person));
 		
 		personWithLogging.walk();
 		personWithLogging.talk();
 		personWithLogging.talk();
+		personWithLogging.crunch();
 		System.out.println(personWithLogging);
 	}
 }

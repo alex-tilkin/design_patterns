@@ -14,7 +14,7 @@ class CapitalizedText {
 
 	public void capitalize(int start, int end) {
 		for (int index = start; index <= end; ++index) {
-			isCapitalized[index] = true;	
+			isCapitalized[index] = true;
 		}
 	}
 
@@ -51,10 +51,11 @@ class FlyweightCapitalizedText {
 
 		for (int index = 0; index < text.length(); ++index) {
 			char character = text.charAt(index);
-			for (TextRange range : formatting)
+			for (TextRange range : formatting) {
 				if (range.isCovers(index) && range.capitalize) {
 					character = Character.toUpperCase(character);
 				}
+			}
 			
 			stringBuilder.append(character);
 		}
@@ -66,8 +67,6 @@ class FlyweightCapitalizedText {
 		public int start;
 		public int end;
 		public boolean capitalize;
-		public boolean bold; 
-		public boolean italic;
 
 		public TextRange(int start, int end) {
 			this.start = start;

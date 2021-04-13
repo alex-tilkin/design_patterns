@@ -18,10 +18,10 @@ class Property<T> {
 	}
 }
 
-class Entity{
+class MyInteger{
 	public Property<Integer> value;
 	
-	public Entity(Integer value) {
+	public MyInteger(Integer value) {
 		this.value = new Property<Integer>(value);
 	}
 	
@@ -34,9 +34,29 @@ class Entity{
 	}
 }
 
+class MyFloat{
+	public Property<Float> value;
+	
+	public MyFloat(Float value) {
+		this.value = new Property<Float>(value);
+	}
+	
+	public Float getValue(){
+		return value.get();
+	}
+	
+	public void setValue(Float value){
+		this.value.set(value);
+	}
+}
+
 public class PropertyProxyExample {
 
 	public static void main(String[] args) {
-		(new Entity(10)).setValue(20);
+		new Property<Integer>(10);
+		new MyInteger(10);
+		new MyFloat(10f);
+		
+		(new MyInteger(10)).setValue(20);
 	}
 }

@@ -13,10 +13,10 @@ class Gazillion {
 	}
 }
 
-class Factory {
+class Flyweight {
 	private Gazillion[] pool;
 
-	public Factory(int maxRows) {
+	public Flyweight(int maxRows) {
 		pool = new Gazillion[maxRows];
 	}
 
@@ -24,6 +24,7 @@ class Factory {
 		if (pool[row] == null) {
 			pool[row] = new Gazillion(row);
 		}
+		
 		return pool[row];
 	}
 }
@@ -32,10 +33,10 @@ public class FlyweightExample {
 	public static final int ROWS = 6, COLS = 10;
 
 	public static void main(String[] args) {
-		Factory factory = new Factory(ROWS);
+		Flyweight flyWeight = new Flyweight(ROWS);
 		for (int i = 0; i < ROWS; i++) {
 			for (int j = 0; j < COLS; j++) {
-				factory.getFlyweight(i).report(j);
+				flyWeight.getFlyweight(i).report(j);
 			}
 			
 			System.out.println();
