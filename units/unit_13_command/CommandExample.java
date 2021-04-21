@@ -7,12 +7,18 @@ import java.util.List;
 class Well{
 	private int currentVolume = 0;
 	
-	public void addWater(int liters) {
+	public boolean addWater(int liters) {
 		currentVolume += liters;
 		System.out.println("We added " + liters + "; now the the current volume in the well is " + currentVolume);
+		
+		return true;
 	}
 	
 	public boolean drainWater(int liters) {
+		if(currentVolume == 0) {
+			return false;
+		}
+		
 		currentVolume -= liters;
 		System.out.println("We reduced " + liters + "; now the the current volume in the well is " + currentVolume);
 		
@@ -46,8 +52,7 @@ class WellComand implements ICommand{
 	public void apply() {
 		switch(commandType) {
 			case ADD:
-				succeed = true;
-				well.addWater(liters);
+				succeed = well.addWater(liters);
 				break;
 			case DRAIN:
 				succeed = well.drainWater(liters);

@@ -1,6 +1,6 @@
 package unit_14_chain_of_responsibility;
 
-class Samurai{
+class Samurai {
 	String name;
 	int speed;
 	int power;
@@ -12,7 +12,7 @@ class Samurai{
 	}
 }
 
-class SamuraiModifier{
+class SamuraiModifier {
 	protected Samurai samurai;
 	protected SamuraiModifier next;
 	
@@ -48,7 +48,6 @@ class SamuraiSpeedIncreaser extends SamuraiModifier {
 		
 		super.handle();
 	}
-	
 }
 
 class SamuraiPowerIncreaser extends SamuraiModifier {
@@ -64,10 +63,9 @@ class SamuraiPowerIncreaser extends SamuraiModifier {
 		
 		super.handle();
 	}
-	
 }
 
-public class MethodChainExample {
+public class ChainOfResponsibilityExample {
 	
 	public static void main(String[] args) {
 		Samurai samurai = new Samurai("Jin", 1, 2);
