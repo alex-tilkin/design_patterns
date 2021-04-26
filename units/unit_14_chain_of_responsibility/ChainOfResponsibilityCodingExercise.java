@@ -44,5 +44,5 @@ class Game {
 }
 
 public class ChainOfResponsibilityCodingExercise {
-
+	
 }
