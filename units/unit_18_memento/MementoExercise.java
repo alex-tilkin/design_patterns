@@ -26,7 +26,7 @@ class TokenMachine {
 		return null;
 	}
 
-	public void revert(Memento m) {
+	public void revert(MementoEx mementoEx) {
 		// todo
 	}
 }

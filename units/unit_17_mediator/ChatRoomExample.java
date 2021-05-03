@@ -26,8 +26,7 @@ class Person{
 	}
 }
 
-class ChatRoom{
-	
+class ChatRoom {
 	private List<Person> people = new ArrayList<Person>();
 	
 	public void join(Person person) {
@@ -48,10 +47,21 @@ class ChatRoom{
 	}
 
 	public void message(String source, String destination, String message) {
+		
+		/*for (Person person : people) {
+			if(person.name.equals(destination)) {
+				person.receive(source, message);
+				
+				break;
+			}
+		}*/
+		
+		// ^ has the same logic v
+		
 		people.stream()
-		.filter(person -> person.name.equals(destination))
-		.findFirst()
-		.ifPresent(person -> person.receive(source, message));
+			.filter(person -> person.name.equals(destination))
+			.findFirst()
+			.ifPresent(person -> person.receive(source, message));
 	}
 }
 

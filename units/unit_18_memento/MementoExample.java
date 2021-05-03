@@ -23,7 +23,7 @@ class BankAccount{
 	public Memento deposit(int amount) {
 		this.balance += amount;
 		
-		return new Memento(this.balance);
+		return new Memento(this.balance - amount);
 	}
 	
 	public void restore(Memento memento) {

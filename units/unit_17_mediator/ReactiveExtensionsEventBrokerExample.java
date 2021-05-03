@@ -6,7 +6,7 @@ import java.util.List;
 import io.reactivex.Observable;
 import io.reactivex.Observer;
 
-class EventBroker extends Observable<Integer>{
+class EventBroker extends Observable<Integer> {
 	private List<Observer<? super Integer>> observers = new ArrayList<>();
 	
 	@Override
@@ -19,7 +19,6 @@ class EventBroker extends Observable<Integer>{
 			observer.onNext(n);
 		}
 	}
-	
 }
 
 class FootballPlayer{
@@ -37,13 +36,18 @@ class FootballPlayer{
 	}
 }
 
-
 class HeadCoach{
 	public HeadCoach(EventBroker eventBroker) {
-		eventBroker.subscribe((i) -> {System.out.println("You made " + i + " touchdowns");});
+		eventBroker.subscribe((i) -> { 
+			System.out.println("You made " + i + " touchdowns");
+			});
 	}
 	
+	public void foo(int i) {
+		System.out.println("You made " + i + " touchdowns");
+	}
 }
+
 public class ReactiveExtensionsEventBrokerExample {
 
 	public static void main(String[] args) {
