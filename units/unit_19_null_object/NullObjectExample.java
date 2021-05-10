@@ -1,12 +1,11 @@
 package unit_19_null_object;
 
-interface Log {
+interface ILog {
 	void info(String msg);
-
 	void warn(String msg);
 }
 
-class ConsoleLog implements Log {
+class ConsoleLog implements ILog {
 
 	@Override
 	public void info(String msg) {
@@ -19,26 +18,7 @@ class ConsoleLog implements Log {
 	}
 }
 
-class EntranceCounter {
-	private Log log;
-	private int count;
-
-	public EntranceCounter(Log log) {
-		this.log = log;
-	}
-
-	public void enter(int numberOfPeople) {
-		count += numberOfPeople;
-		log.info("Entered " + numberOfPeople + ", The count is " + count);
-	}
-
-	public void leave(int amount) {
-		count -= amount;
-		System.out.println("Left " + amount + ", the count is " + count);
-	}
-}
-
-final class NullLog implements Log {
+final class NullLog implements ILog {
 
 	@Override
 	public void info(String msg) {
@@ -51,12 +31,37 @@ final class NullLog implements Log {
 	}
 }
 
+class EntranceCounter {
+	public ILog log;
+	private int count;
+
+	public EntranceCounter(ILog log) {
+		this.log = log;
+	}
+
+	public void enter(int numberOfPeople) {
+		count += numberOfPeople;
+		
+		log.info("Entered " + numberOfPeople + ", The count is " + count);
+	}
+
+	public void leave(int amount) {
+		count -= amount;
+		log.warn("Left " + amount + ", the count is " + count);
+	}
+}
+
 public class NullObjectExample {
 
 	public static void main(String[] args) {
-	    NullLog log = new NullLog();
+	    NullLog nullLog = new NullLog();
 
-	    EntranceCounter entranceCounter = new EntranceCounter(log);
+	    EntranceCounter entranceCounter = new EntranceCounter(nullLog);
+	    entranceCounter.enter(100);
+	    entranceCounter.leave(50);
+	    
+	    ConsoleLog consoleLog = new ConsoleLog();
+	    entranceCounter.log = consoleLog;
 	    entranceCounter.enter(100);
 	    entranceCounter.leave(50);
 	}
