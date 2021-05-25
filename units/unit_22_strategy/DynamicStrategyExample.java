@@ -18,14 +18,14 @@ interface IDynamicListStrategy {
 	}
 }
 
-class DynamicMarkdownListStrategy implements IListStrategy {
+class DynamicMarkdownListStrategy implements IDynamicListStrategy {
 	@Override
 	public void addListItem(StringBuilder stringBuilder, String item) {
 		stringBuilder.append(" * ").append(item).append(System.lineSeparator());
 	}
 }
 
-class DynamicHtmlListStrategy implements IListStrategy {
+class DynamicHtmlListStrategy implements IDynamicListStrategy {
 	@Override
 	public void start(StringBuilder sb) {
 		sb.append("<ul>").append(System.lineSeparator());
@@ -44,9 +44,9 @@ class DynamicHtmlListStrategy implements IListStrategy {
 
 class DynamicTextProcessor {
 	private StringBuilder sb = new StringBuilder();
-	private IListStrategy listStrategy;
+	private IDynamicListStrategy listStrategy;
 
-	public DynamicTextProcessor(IListStrategy listStrategy) {
+	public DynamicTextProcessor(IDynamicListStrategy listStrategy) {
 		this.listStrategy = listStrategy;
 	}
 	
@@ -64,7 +64,7 @@ class DynamicTextProcessor {
 	public void appendList(List<String> items) {
 		listStrategy.start(sb);
 		for (String item : items) {
-			((unit_22_strategy.IListStrategy) listStrategy).addListItem(sb, item);
+			listStrategy.addListItem(sb, item);
 		}
 		
 		listStrategy.end(sb);
@@ -86,7 +86,6 @@ public class DynamicStrategyExample {
 		DynamicTextProcessor textProcessor = new DynamicTextProcessor(new DynamicHtmlListStrategy());
 		textProcessor.appendList(Arrays.asList("liberte", "egalite", "fraternite"));
 		System.out.println(textProcessor);
-		
 		textProcessor.switchStrategy(StrategyType.MarkDown);
 		textProcessor.appendList(Arrays.asList("inheritance", "encapsulation", "polymorphism"));
 		System.out.println(textProcessor);

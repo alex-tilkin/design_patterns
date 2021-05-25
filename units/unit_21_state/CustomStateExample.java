@@ -48,12 +48,12 @@ public class CustomStateExample {
 		transitions.add(new Pair<Transition, StateE>(Transition.ADD_TO_CART, StateE.IN_CART));
 		stateMachine.put(StateE.ON_SALE, transitions);
 		
-		transitions.clear();
+		transitions = new ArrayList<Pair<Transition,StateE>>();
 		transitions.add(new Pair<Transition, StateE>(Transition.REMOVE_FROM_WISHLIST, StateE.ON_SALE));
 		transitions.add(new Pair<Transition, StateE>(Transition.ADD_TO_CART, StateE.IN_CART));
 		stateMachine.put(StateE.IN_WISHLIST, transitions);
 		
-		transitions.clear();
+		transitions = new ArrayList<Pair<Transition,StateE>>();
 		transitions.add(new Pair<Transition, StateE>(Transition.PAY, StateE.SOLD));
 		transitions.add(new Pair<Transition, StateE>(Transition.REMOVE_FROM_CART, StateE.ON_SALE));
 		stateMachine.put(StateE.IN_CART, transitions);
