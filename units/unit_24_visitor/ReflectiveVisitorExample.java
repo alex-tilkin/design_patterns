@@ -2,11 +2,11 @@ package unit_24_visitor;
 
 // separation of concerns
 class ExpressionPrinter {
-	public static void print(Expression e, StringBuilder sb) {
-		if (e.getClass() == DoubleExpression.class) {
-			sb.append(((DoubleExpression) e).value);
-		} else if (e.getClass() == AdditionExpression.class) {
-			AdditionExpression ae = (AdditionExpression) e;
+	public static void print(Expression expression, StringBuilder sb) {
+		if (expression.getClass() == DoubleExpression.class) {
+			sb.append(((DoubleExpression) expression).value);
+		} else if (expression.getClass() == AdditionExpression.class) {
+			AdditionExpression ae = (AdditionExpression) expression;
 			sb.append("(");
 			print(ae.left, sb);
 			sb.append("+");
