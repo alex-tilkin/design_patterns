@@ -2,48 +2,69 @@ package unit_02_builder;
 
 import java.util.ArrayList;
 
-class SurfboardBuilder {
+import unit_02_builder.Surfboard.SurfboardBuilder;
+
+class Surfboard {
 	private String shaper;
 	private int length;
 	private int volume;
 	private String color;
 
-	public void addShaper(String shaper) {
-		this.shaper = shaper;
-	}
-	
-	public void addLength(int length) {
-		this.length = length;
-	}
-	
-	public void addVolume(int volume) {
-		this.volume = volume;
-	}
-	
-	public void addColor(String color) {
-		this.color = color;
+	private Surfboard() {
 	}
 	
 	@Override
 	public String toString() {
 		return String.format("Shaper: %s; Length: %d; Volume: %d; Color: %s\n", shaper, length, volume, color);
 	}
+
+	static class SurfboardBuilder {
+		private static Surfboard surfboard;
+	
+		static void newSufboard() {
+			surfboard = new Surfboard();
+		}
+		
+		static void addShaper(String shaper) {
+			surfboard.shaper = shaper;
+		}
+		
+		static void addLength(int length) {
+			surfboard.length = length;
+		}
+		
+		static void addVolume(int volume) {
+			surfboard.volume = volume;
+		}
+		
+		static void addColor(String color) {
+			surfboard.color = color;
+		}
+		
+		static Surfboard build() {
+			return surfboard;
+		}
+		
+		static void clear() {
+			surfboard = new Surfboard();
+		}
+	}
 }
 
 class SurfboardsAdBuilder {
 	private String title;
-	private ArrayList<SurfboardBuilder> surfboardBuilders = new ArrayList<SurfboardBuilder>();
+	private ArrayList<Surfboard> surfboards = new ArrayList<Surfboard>();
 	
 	public SurfboardsAdBuilder(String title) {
 		this.title = title;
 	}
 	
-	public void addSurfboard(SurfboardBuilder surfboardBuilder) {
-		surfboardBuilders.add(surfboardBuilder);
+	public void addSurfboard(Surfboard surfboard) {
+		surfboards.add(surfboard);
 	}
 	
 	void clear() {
-		surfboardBuilders.clear();
+		surfboards.clear();
 	}
 	
 	@Override
@@ -54,7 +75,7 @@ class SurfboardsAdBuilder {
 		String sRepeated = new String(new char[title.length()]).replace('\0', '=');
 
 		stringBuffer.append(sRepeated + "\n");
-		surfboardBuilders.stream().forEach(surfboardBuilder -> stringBuffer.append(surfboardBuilder));
+		surfboards.stream().forEach(surfboard -> stringBuffer.append(surfboard));
 		
 		return stringBuffer.toString();
 	}
@@ -63,24 +84,25 @@ class SurfboardsAdBuilder {
 public class SurfboardsAdBuilderExample {
 
 	public static void main(String[] args) {
-		SurfboardsAdBuilder surfboardsAdBuilder = new SurfboardsAdBuilder("Surfboards TLV");
+		SurfboardsAdBuilder surfboards = new SurfboardsAdBuilder("Surfboards TLV");
 		
-		SurfboardBuilder surfboardBuilder1 = new SurfboardBuilder();
-		SurfboardBuilder surfboardBuilder2 = new SurfboardBuilder();
+		Surfboard.SurfboardBuilder.newSufboard();
+		Surfboard.SurfboardBuilder.addColor("blue");
+		Surfboard.SurfboardBuilder.addLength(6);
+		Surfboard.SurfboardBuilder.addVolume(20);
+		Surfboard.SurfboardBuilder.addShaper("Channel Islands");
+		Surfboard channelIslandsSurfboard = SurfboardBuilder.build();
 		
-		surfboardBuilder1.addColor("blue");
-		surfboardBuilder1.addLength(6);
-		surfboardBuilder1.addVolume(20);
-		surfboardBuilder1.addShaper("Channel Islands");
+		SurfboardBuilder.clear();
+		Surfboard.SurfboardBuilder.addColor("red");
+		Surfboard.SurfboardBuilder.addLength(7);
+		Surfboard.SurfboardBuilder.addVolume(22);
+		Surfboard.SurfboardBuilder.addShaper("Hurley");
+		Surfboard harleySurfboard = SurfboardBuilder.build();
 		
-		surfboardBuilder2.addColor("red");
-		surfboardBuilder2.addLength(7);
-		surfboardBuilder2.addVolume(22);
-		surfboardBuilder2.addShaper("Hurley");
+		surfboards.addSurfboard(channelIslandsSurfboard);
+		surfboards.addSurfboard(harleySurfboard);
 		
-		surfboardsAdBuilder.addSurfboard(surfboardBuilder1);
-		surfboardsAdBuilder.addSurfboard(surfboardBuilder2);
-		
-		System.out.println(surfboardsAdBuilder);
+		System.out.println(surfboards);
 	}
 }

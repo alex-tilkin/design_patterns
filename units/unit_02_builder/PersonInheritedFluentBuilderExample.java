@@ -49,7 +49,7 @@ public class PersonInheritedFluentBuilderExample {
 
 	public static void main(String[] args) {
 		ScholarBuilderTyped scholarBuilderTyped = new ScholarBuilderTyped();
-		
+
 		PersonTyped person = scholarBuilderTyped.addId(123).addName("Eric").<ScholarBuilderTyped>typed().addEducation("B.Sc. Software Engineering").build();
 		
 		System.out.println(person.toString());
