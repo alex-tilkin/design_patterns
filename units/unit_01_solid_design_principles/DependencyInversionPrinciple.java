@@ -45,7 +45,7 @@ class AgnosticStudy {
 }
 //^^ Application
 
-public class InterfaceInversionPrinciple {
+public class DependencyInversionPrinciple {
 
 	public static void main(String[] args) {
 		Person person1 = new Person("Avi");

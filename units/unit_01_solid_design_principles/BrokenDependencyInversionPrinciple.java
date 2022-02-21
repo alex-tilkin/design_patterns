@@ -46,7 +46,7 @@ class Study {
 }
 //^^ Application
 
-public class BrokenInterfaceInversionPrinciple {
+public class BrokenDependencyInversionPrinciple {
 
 	public static void main(String[] args) {
 		Person person1 = new Person("Avi");
