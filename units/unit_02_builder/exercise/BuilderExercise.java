@@ -1,4 +1,4 @@
-package unit_02_builder;
+package unit_02_builder.exercise;
 
 class CodeBuilder {
 	public CodeBuilder(String className) {

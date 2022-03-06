@@ -1,4 +1,4 @@
-package unit_03_factory;
+package unit_03_factory.exercise;
 
 class Person {
 	public int id;
@@ -19,7 +19,7 @@ class Person {
 
 
 
-public class FactoryCodingExercise {
+public class FactoryExercise {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

@@ -1,4 +1,4 @@
-package unit_04_prototype;
+package unit_04_prototype.exercise;
 
 class Point {
 	public int x, y;
