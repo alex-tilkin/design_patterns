@@ -1,4 +1,4 @@
-package unit_08_composite;
+package unit_08_composite.exercise;
 
 import java.util.*;
 

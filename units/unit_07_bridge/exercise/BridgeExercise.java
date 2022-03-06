@@ -1,4 +1,4 @@
-package unit_07_bridge;
+package unit_07_bridge.exercise;
 
 abstract class ShapeEx {
 	public abstract String getName();

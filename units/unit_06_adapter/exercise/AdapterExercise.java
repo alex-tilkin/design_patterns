@@ -1,4 +1,4 @@
-package unit_06_adapter;
+package unit_06_adapter.exercise;
 
 class Square {
 	public int side;
