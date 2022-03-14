@@ -1,4 +1,4 @@
-package unit_13_command;
+package unit_13_command.exercise;
 
 class Command {
 	enum Action {

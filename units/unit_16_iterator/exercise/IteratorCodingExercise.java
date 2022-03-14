@@ -1,8 +1,6 @@
-package unit_16_iterator;
+package unit_16_iterator.exercise;
 
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
 class NodeEx<T> {
 	public T value;
@@ -20,7 +18,7 @@ class NodeEx<T> {
 		left.parent = right.parent = this;
 	}
 
-	public Iterator<Node<T>> preOrder() {
+	public Iterator<NodeEx<T>> preOrder() {
 		// todo
 		return null;
 	}

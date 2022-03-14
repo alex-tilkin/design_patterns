@@ -1,4 +1,4 @@
-package unit_17_mediator;
+package unit_17_mediator.exercise;
 
 class Participant {
 	public Participant(Mediator mediator) {
@@ -14,7 +14,7 @@ class Mediator {
 	// todo
 }
 
-public class MediatorCodingExercise {
+public class MediatorExercise {
 	public static void main(String[] args) {
 		
 	}

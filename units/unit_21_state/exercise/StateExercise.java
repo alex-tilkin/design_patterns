@@ -1,4 +1,4 @@
-package unit_21_state;
+package unit_21_state.exercise;
 
 class CombinationLock {
 	private int[] combination;

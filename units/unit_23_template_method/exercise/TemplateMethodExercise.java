@@ -1,4 +1,4 @@
-package unit_23_template_method;
+package unit_23_template_method.exercise;
 
 class Creature {
 	public int attack, health;
@@ -60,6 +60,6 @@ class PermanentCardDamageGame extends CardGame {
 	// todo
 }
 
-public class TemplateMethodCodingExercise {
+public class TemplateMethodExercise {
 
 }

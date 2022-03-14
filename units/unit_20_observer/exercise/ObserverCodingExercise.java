@@ -1,4 +1,4 @@
-package unit_20_observer;
+package unit_20_observer.exercise;
 
 import java.io.Closeable;
 import java.io.IOException;

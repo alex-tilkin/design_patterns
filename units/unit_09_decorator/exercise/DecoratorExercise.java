@@ -1,4 +1,4 @@
-package unit_09_decorator;
+package unit_09_decorator.exercise;
 
 class Bird {
 	public int age;

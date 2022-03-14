@@ -1,4 +1,4 @@
-package unit_12_proxy;
+package unit_12_proxy.exercise;
 
 class PersonExercise {
 	private int age;

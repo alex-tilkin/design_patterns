@@ -1,4 +1,4 @@
-package unit_11_flyweight;
+package unit_11_flyweight.exercise;
 
 class Sentence {
 	public Sentence(String plainText) {

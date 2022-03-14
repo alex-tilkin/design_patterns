@@ -1,4 +1,4 @@
-package unit_15_interpreter;
+package unit_15_interpreter.exercise;
 
 import java.util.HashMap;
 import java.util.Map;

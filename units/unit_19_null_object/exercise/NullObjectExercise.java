@@ -1,4 +1,4 @@
-package unit_19_null_object;
+package unit_19_null_object.exercise;
 
 interface LogExercise {
 	// max # of elements in the log

@@ -1,4 +1,4 @@
-package unit_18_memento;
+package unit_18_memento.exercise;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package unit_24_visitor;
+package unit_24_visitor.exercise;
 
 abstract class ExpressionVisitorEx {
 	abstract void visit(ValueEx value);
@@ -82,7 +82,7 @@ class ExpressionPrinterEx extends ExpressionVisitorEx {
 	}
 }
 
-public class VisitorCodingExercise {
+public class VisitorExercise {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

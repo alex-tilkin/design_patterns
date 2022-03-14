@@ -1,4 +1,4 @@
-package unit_14_chain_of_responsibility;
+package unit_14_chain_of_responsibility.exercise;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +17,7 @@ class Goblin extends Creature {
 	@Override
 	public int getAttack() {
 		// todo
-		
+
 		return -1;
 	}
 
@@ -43,6 +43,6 @@ class Game {
 	public List<Creature> creatures = new ArrayList<>();
 }
 
-public class ChainOfResponsibilityCodingExercise {
-	
+public class ChainOfResponsibilityExercise {
+
 }

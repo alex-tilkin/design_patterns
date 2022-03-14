@@ -1,4 +1,4 @@
-package unit_22_strategy;
+package unit_22_strategy.exercise;
 
 import java.util.Objects;
 
@@ -188,7 +188,7 @@ class Pair<X, Y> {
 	}
 }
 
-public class StrategyCodingExercise {
+public class StrategyExercise {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
